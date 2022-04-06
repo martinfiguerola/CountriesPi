@@ -37,14 +37,14 @@ const NavBar = ({handleSelect, handleSort, handleByActivity}) => {
                 <option value='Antarctica'>Antarctica</option>
             </select>
 
-           {/*  <select  defaultValue='Sort Activity' onChange={e => handleByActivity(e)} >
+            <select  defaultValue='Sort Activity' onChange={e => handleByActivity(e)} >
                 <option>Sort Activity</option>
                 {
                     allActivities?.map( (activity, index) => (
                         <option key={index} value={activity.name}>{activity.name.charAt(0).toUpperCase() + activity.name.slice(1)}</option>
                     ))
                 }
-            </select>  */}
+            </select>  
         </div>
     )
 }

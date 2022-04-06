@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import {useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import {NavLink} from 'react-router-dom'
 import {getDetails} from '../actions/index'
@@ -30,7 +30,7 @@ const Detail = (props) => {
                   
                   activitiesDetail? activitiesDetail.map(element => (
                     <div key={element.id}>
-                        <h4>{element.name}</h4>    
+                        <h4>{element.name.charAt(0).toUpperCase() + element.name.slice(1)}</h4>    
                         <p><span>Difficulty:</span> {element.difficulty}</p>    
                         <p><span>Duration:</span> {element.duration}</p>    
                         <p><span>Season:</span> {element.season}</p>    

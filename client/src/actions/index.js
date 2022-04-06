@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, GET_BY_CONTINENT, ORDER_COUNTRIES, GET_NAME_COUNTRIES, GET_ACTIVITIES, ORDER_ACTIVITY, GET_DETAIL, POST_ACTIVITY } from './types';
+import { GET_ALL_COUNTRIES, GET_BY_CONTINENT, ORDER_COUNTRIES, GET_NAME_COUNTRIES, GET_ACTIVITIES, ORDER_ACTIVITY, GET_DETAIL, } from './types';
 import axios from 'axios';
 
 export function getCountries(){
@@ -75,12 +75,12 @@ export function getDetails(id){
     }
 }                                                                                   
 
-/* export function postActivity(activity){
+ export function postActivity(activity){
     return async function(dispatch){
         let response = await axios.post('http://localhost:3001/activity', activity)
         return response
                                                                                                                    
     }
-} */
+} 
 
 
