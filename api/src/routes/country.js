@@ -34,7 +34,6 @@ router.get('/', async (req, res, next) => {
     const name = req.query.name
     //const filterContinent = req.query.filter
     const countriesApi = await responseApi()
-
     try {
         // VERIFICO SI ESTA LA BD LLENA
         const hay = await Country.findAll();
@@ -61,7 +60,29 @@ router.get('/', async (req, res, next) => {
         } catch (error) {
             next(error)
         }
-    }else {
+    }
+    else if(req.query.filter){
+        let arrcountries = [];
+        const activityFound = await Activity.findOne({
+            where: { name: req.query.filter },
+            include: {
+                model: Country,
+            },
+        })
+        activityFound.countries.forEach(element => {
+           return arrcountries.push({
+               id: element.id,
+               name: element.name,
+               image: element.image,
+               continent: element.continent,
+               population: element.population
+           })
+        });
+        arrcountries.length ?
+        res.json(arrcountries):
+        res.send('No hay paises con esta actividad')
+    } 
+    else {
         try {
             const countries = await Country.findAll({
                 include: {model: Activity}

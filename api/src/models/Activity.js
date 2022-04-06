@@ -10,11 +10,12 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             validate: {
                 min: 1,
-                min: 5
+                max: 5
             }
         },
         duration: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
+        
         },
         season: {
             type: DataTypes.ENUM("summer", "fall", "winter", "spring")
