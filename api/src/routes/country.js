@@ -13,13 +13,13 @@ const router = Router();
 // --- GET COUNTRIES ----
 // -- ME TRAIGO DATA DE LA API
 const responseApi = async () => {
-    const response = await axios.get('https://restcountries.com/v3/all'); 
+    const response = await axios.get('https://restcountries.com/v3.1/all'); 
    
     return  response.data?.map(country => {
         return {
             id: country.cca3,
             name: country.name.common,
-            image: country.flags[0],
+            image: country.flags.png ? country.flags.png : 'img not found',
             continent: country.continents[0],
             capital: country.capital  ? country.capital[0]: 'Capital not found',
             subregion: country.subregion,
@@ -62,25 +62,33 @@ router.get('/', async (req, res, next) => {
         }
     }
     else if(req.query.filter){
-        let arrcountries = [];
-        const activityFound = await Activity.findOne({
-            where: { name: req.query.filter },
-            include: {
-                model: Country,
-            },
-        })
-        activityFound.countries.forEach(element => {
-           return arrcountries.push({
-               id: element.id,
-               name: element.name,
-               image: element.image,
-               continent: element.continent,
-               population: element.population
-           })
-        });
-        arrcountries.length ?
-        res.json(arrcountries):
-        res.send('No hay paises con esta actividad')
+        try {
+           let arrcountries = [];
+            const activityFound = await Activity.findOne({
+                where: { 
+                    name: {
+                        [Op.iLike]: '%' + req.query.filter + '%' 
+                    }
+                },
+                include: {
+                    model: Country,
+                },
+            })
+            activityFound.countries?.forEach(element => {
+                return arrcountries.push({
+                    id: element.id,
+                    name: element.name,
+                    image: element.image,
+                    continent: element.continent,
+                    population: element.population
+                })
+            }); 
+            arrcountries.length ? 
+            res.json(arrcountries):
+            res.send('No hay paises con esta actividad')
+        } catch (error) {
+            next(error)
+        }   
     } 
     else {
         try {

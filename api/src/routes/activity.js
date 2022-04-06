@@ -26,6 +26,12 @@ router.post('/', async (req, res, next) => {
       next(error)
    }
 })
+router.get('/', async (req, res, next) => {
+   const activitiesAll = await Activity.findAll()
+   activitiesAll.length ?
+   res.json(activitiesAll):
+   res.send('Todavia no hay actividades')
+})
 
 
 module.exports = router;
