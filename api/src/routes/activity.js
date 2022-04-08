@@ -27,10 +27,14 @@ router.post('/', async (req, res, next) => {
    }
 })
 router.get('/', async (req, res, next) => {
-   const activitiesAll = await Activity.findAll()
-   activitiesAll.length ?
-   res.json(activitiesAll):
-   res.send('Todavia no hay actividades')
+   try {
+      const activitiesAll = await Activity.findAll()
+      res.json(activitiesAll)
+   } catch (error) {
+      next(error)
+   }
+  
+   
 })
 
 

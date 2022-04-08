@@ -54,9 +54,7 @@ router.get('/', async (req, res, next) => {
                 },
                 include: { model: Activity}
             })
-            countryName.length ?
-            res.json(countryName):
-            res.send('Country not found')
+            res.json(countryName)
         } catch (error) {
             next(error)
         }
