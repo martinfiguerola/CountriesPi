@@ -78,7 +78,7 @@ export function getDetails(id){
  export function postActivity(activity){
     return async function(dispatch){
         let response = await axios.post('http://localhost:3001/activity', activity)
-        return response
+        return response.data
                                                                                                                    
     }
 } 

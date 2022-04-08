@@ -1,11 +1,16 @@
-import React from 'react'
+import React from 'react';
+import s from '../styles/Card.module.css'
 
 const Card = ({name, image, continent}) => {
   return (
-    <div>
-        <img src={image} alt="img not found" width='200px' height='250px' />
+    <div className={s.cardContainer}>
+      <div className={s.bodyContainer}>
+        <figure>
+          <img src={image} alt="img not found" width='200px' height='250px' />
+        </figure>
         <p>{name}</p>
-        <p>{continent}</p>
+        <p>Continent: {continent}</p>
+      </div>
     </div>
   )
 }

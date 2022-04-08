@@ -5,18 +5,17 @@ import { NavLink } from 'react-router-dom';
 import { getAllActivities } from '../actions';
 
 const NavBar = ({handleSelect, handleSort, handleByActivity}) => {
-    const allActivities = useSelector((state) => state.activities)
     const dispatch = useDispatch();
+    const allActivities = useSelector((state) => state.activities)
     useEffect(() => {
         dispatch(getAllActivities())
     },[dispatch])
-
+   
+   
     return (
         <div>
-           <NavLink to='/activity'>
-                Create
-           </NavLink>
             <h1>Countries Page</h1>
+           
             <select defaultValue='Sort by:' onChange={e => handleSort(e)}>
                 <option>Sort by:</option>
                 <option value='asc'>A-Z</option> 
@@ -40,11 +39,17 @@ const NavBar = ({handleSelect, handleSort, handleByActivity}) => {
             <select  defaultValue='Sort Activity' onChange={e => handleByActivity(e)} >
                 <option>Sort Activity</option>
                 {
-                    allActivities?.map( (activity, index) => (
-                        <option key={index} value={activity.name}>{activity.name.charAt(0).toUpperCase() + activity.name.slice(1)}</option>
+                    allActivities?.length > 0 &&
+                    allActivities?.map(el => (
+                        <option key={el.id} value={el.name}>{el.name.charAt(0).toUpperCase() + el.name.slice(1)}</option>
                     ))
                 }
             </select>  
+            <NavLink to='/activity'>
+                <button type="button">
+                    Create Activity
+                </button>
+           </NavLink>
         </div>
     )
 }

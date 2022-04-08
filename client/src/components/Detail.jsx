@@ -40,7 +40,7 @@ const Detail = (props) => {
             </div>
             <NavLink to='/home/'>
                 <button>
-                    back
+                    Back
                 </button>
             </NavLink>
         </div>

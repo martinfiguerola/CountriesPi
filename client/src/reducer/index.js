@@ -60,7 +60,7 @@ export default function rootReducer(state = initialState, action){
         case GET_NAME_COUNTRIES:
             return {
                 ...state,
-                filtered: action.payload
+                 filtered: action.payload
             }
         case GET_DETAIL:
             return{

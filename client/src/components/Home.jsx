@@ -11,6 +11,9 @@ import Card from './Card';
 import Paginado from './Paginado';
 import SearchBar from './SearchBar';
 import NavBar from './NavBar';
+// importo  los estilos de css module
+import s from '../styles/Home.module.css';
+import Loading from './Loading';
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -47,39 +50,42 @@ const Home = () => {
     dispatch(orderActivity(e.target.value))
     setPage(1)
   }
-  
+  if(filteredCountries.length < 1){
+    return (
+      <Loading/>
+    )
+  }
+
+  else{
   return (
-    <div>
-        <NavBar 
-          handleSelect={handleSelect}
-          handleSort={handleSort}
-          handleByActivity={handleByActivity}
-        />
-        <SearchBar />
-        {
-          filteredCountries.length ? (
-          filteredCountries.map( (country, index) => {
-              return (
-                <div key={country.id}>
-                  <NavLink to={'/home/' + country.id}>
-                      <Card 
-                        name={country.name} 
-                        image={country.image} 
-                        continent={country.continent}
-                    />
-                  </NavLink>
-                </div>
-                  
-                   
-              )
-            }) 
-          ) : (
-            <p>Loading...</p>
-          )
-        }
-        <Paginado page={page} setPage={setPage} maxPage={maxPage}/>
-    </div>
-  )
+      <div className={s.container}>
+          <NavBar 
+            handleSelect={handleSelect}
+            handleSort={handleSort}
+            handleByActivity={handleByActivity}
+          />
+          <SearchBar />
+         {/*  <div className={s.cardsContainer}> */}
+          {
+            filteredCountries.length && 
+            filteredCountries.map( country => {
+                return (
+                    <NavLink to={'/home/' + country.id}>
+                        <Card 
+                          name={country.name} 
+                          image={country.image} 
+                          continent={country.continent}
+                      />
+                    </NavLink> 
+                )
+              }) 
+          }
+        {/*   </div> */}
+          
+          <Paginado page={page} setPage={setPage} maxPage={maxPage}/>
+      </div>
+    )
+  }
 }
 
 export default Home
