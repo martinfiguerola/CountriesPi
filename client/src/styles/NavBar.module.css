@@ -1,0 +1,35 @@
+.selectContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    
+}
+
+.select{
+    transition: 3s;
+    background-color: #e9ecef;
+    margin: 0.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 4px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer
+}
+.button{
+    background-color: #023047;
+    margin-top: 0.2rem;
+    margin-left: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+.button:hover{
+background-color: #041720;
+}

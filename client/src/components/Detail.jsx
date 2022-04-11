@@ -3,6 +3,8 @@ import {useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import {NavLink} from 'react-router-dom'
 import {getDetails} from '../actions/index'
+// importo los estilos
+import s from '../styles/Detail.module.css'
 
 const Detail = (props) => {
     //console.log('ESTO SON LAS PROPS: ', props)
@@ -15,34 +17,44 @@ const Detail = (props) => {
     const activitiesDetail = countryDetail.activities
     
     return (
-        <div>
-            <div>
-                <h1>{countryDetail.name}</h1>
-                <img src={countryDetail.image} alt="img not found" />
-                <h4>Code: {countryDetail.id}</h4>
-                <h4>Capital: {countryDetail.capital}</h4>
-                <h4>Subregion: {countryDetail.subregion}</h4>
-                <h4>Area: {countryDetail.area}</h4>
-                <h4>Population: {countryDetail.population}</h4>
-            </div>
-            <div>
-              {
-                  
-                  activitiesDetail? activitiesDetail.map(element => (
-                    <div key={element.id}>
-                        <h4>{element.name.charAt(0).toUpperCase() + element.name.slice(1)}</h4>    
-                        <p><span>Difficulty:</span> {element.difficulty}</p>    
-                        <p><span>Duration:</span> {element.duration}</p>    
-                        <p><span>Season:</span> {element.season}</p>    
-                    </div>
-                  )): <p>No hay nada</p>
-              }
-            </div>
+        <div className={s.container}>
             <NavLink to='/home/'>
-                <button>
-                    Back
+                <button className={s.btn}>
+                Back
                 </button>
             </NavLink>
+
+            <div className={s.countryDescription} >
+                <figure>
+                    <img src={countryDetail.image} alt="img not found" />
+                </figure>
+                <div className={s.countryBody}>
+                    <div className={s.countryDetail}>
+                        <h1>{countryDetail.name}</h1>
+                        <p> <span>Code: </span>{countryDetail.id}</p>
+                        <p> <span> Capital: </span>{countryDetail.capital}</p>
+                        <p> <span>Subregion: </span>{countryDetail.subregion}</p>
+                        <p> <span>Area: </span>{countryDetail.area}</p>
+                        <p> <span>Population: </span>{countryDetail.population}</p>
+                       <h4> <span>Activities: </span></h4>
+                    </div>
+                    <div className={s.containerActivities}>
+                    
+                        {
+                        activitiesDetail? activitiesDetail.map(element => (
+                            <div className={s.activitiesDetail} key={element.id}>
+                                <p><span>Name:</span>{element.name.charAt(0).toUpperCase() + element.name.slice(1)}</p>    
+                                <p><span>Difficulty:</span>{element.difficulty}</p>    
+                                <p><span>Duration:</span>{element.duration}</p>    
+                                <p><span>Season:</span> {element.season}</p>    
+                            </div>
+                        )): <p>No hay nada</p>
+                        }
+                    </div>
+                    
+                </div>
+            </div>
+            
         </div>
     )
 }

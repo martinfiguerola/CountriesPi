@@ -1,0 +1,59 @@
+.formContainer{
+    width: 500px;
+    background-color: #fff;
+    padding: 30px;
+    margin: auto;
+    margin-top: 150px;
+    border-radius: 12px;
+}
+.formContainer h3{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.controlers{
+    margin-bottom: 10px;
+    margin-left: 20px;
+    text-align: justify;
+}
+.controlers input{
+    background-color: #efefef;
+    border-radius: 4px;
+    padding: 4px;
+}
+.controlers label{
+   font-size: 15px;
+}
+.controlers select{
+    background-color: #efefef;
+    padding: 4px;
+}
+.btn input{
+    background-color: #023047;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+    width: 100px;
+}
+.btn input:hover{
+    background-color: #041720;
+}
+.btnBack{
+    margin-top: 40px;
+    background-color: #023047;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+    width: 100px;
+}
+.btnBack:hover{
+    background-color: #041720;
+}
+

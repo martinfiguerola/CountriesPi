@@ -1,16 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import s from '../styles/Card.module.css'
 
-const Card = ({name, image, continent}) => {
+const Card = ({name, image, continent, id}) => {
   return (
-    <div className={s.cardContainer}>
-      <div className={s.bodyContainer}>
-        <figure>
-          <img src={image} alt="img not found" width='200px' height='250px' />
-        </figure>
-        <p>{name}</p>
-        <p>Continent: {continent}</p>
-      </div>
+    <div key={id} className={s.cardContainer}>
+      <Link to={'/home/' + id}>
+          <img src={image} alt="img not found" width='350px' height='200px' />
+        <div className={s.bodyContainer}>
+          <h4>{name}</h4>
+          <h5>Continent: {continent}</h5>
+        </div>
+      </Link>
+        
     </div>
   )
 }

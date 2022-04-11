@@ -1,0 +1,92 @@
+.container{
+    background-color: #efefef;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.btn{
+    display: flex;
+    background-color: #023047;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 4px;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    width: 60px;
+
+
+}
+.btn:hover{
+    background-color: #041720;
+}
+
+
+.countryDescription{
+    /*  background-color: blue;  */
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    flex-wrap: wrap;
+    width: 50vw;
+   margin: auto;
+   padding: 2rem;
+    
+}
+.countryDescription figure{
+    margin: auto;
+    width: 25vw;
+
+}
+
+.countryDetail{
+     /*  background-color: aqua;  */
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    width: 20vw;
+    margin: auto;
+    
+}
+.countryDetail p{
+    margin-bottom: 0.5rem;
+    font-size: 12px;
+
+}
+.countryDetail span{
+    font-weight: bold;
+    font-size: 14px;
+}
+.countryDetail h1{
+    font-weight: bold;
+    margin: 1.5rem 0;
+}
+.countryDetail h4{
+    font-weight: bold;
+    margin: 1rem 0;
+}
+.activitiesDetail span{
+    font-weight: bold;
+    font-size: 12px;
+}
+.activitiesDetail p{
+    margin-bottom: 0.5rem;
+    font-size: 11px;
+}
+
+.containerActivities{
+    background-color: #fff; 
+    display: flex;
+    width: 30vw;
+   margin: auto;
+   height: 30vh;
+    
+}
+.activitiesDetail{
+    text-align: justify;
+    margin: auto;
+    width: auto;
+   
+}

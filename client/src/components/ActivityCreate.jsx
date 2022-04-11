@@ -3,7 +3,8 @@ import {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useHistory, NavLink} from 'react-router-dom';
 import {postActivity, getCountries} from '../actions/index'
-
+//importo los estilos 
+import s from '../styles/ActivityCreate.module.css'
 const validate = (input) => {
     let errors = {};
     if(input.name === '' ){
@@ -66,15 +67,16 @@ const ActivityCreate = () => {
         dispatch(getCountries())
     }, [dispatch])
     return (
-        
-            <form onSubmit={e => handleSubmit(e)}>
-                <NavLink to='/home/'>
-                    <button>
+        <div>
+            <NavLink to='/home/'>
+                    <button className={s.btnBack}>
                         Back
                     </button>
                 </NavLink>
-                <div>
-                    <label>Name</label>
+            <form className={s.formContainer} onSubmit={e => handleSubmit(e)}>
+                <h3>Create Activity</h3>
+                <div className={s.controlers}>
+                    <label>Name:</label>
                     <input 
                         type="text" 
                         name="name"
@@ -84,7 +86,7 @@ const ActivityCreate = () => {
                     />
                     {errors.name && <p>{errors.name}</p>}
                 </div>
-                <div>
+                <div className={s.controlers}>
                     <label>Difficulty: </label>
                     <input
                         type="number"
@@ -97,7 +99,7 @@ const ActivityCreate = () => {
                     />
                     
                 </div>
-                <div>
+                <div className={s.controlers}>
                     <label>Duration(hs): </label>
                     <input
                         type="number"
@@ -110,7 +112,7 @@ const ActivityCreate = () => {
                     />
                     
                 </div>
-                <div>
+                <div className={s.controlers}>
                     <label>Season: </label>
                     <select name="season" onChange={e => handleChange(e)}>
                         <option value="">Select a station</option>
@@ -121,13 +123,9 @@ const ActivityCreate = () => {
                     </select>
                     {errors.season && <p>{errors.season}</p>}
                 </div>
-                <div>
+                <div className={s.controlers} >
                     <p>Select countries:</p>
-                    <p>
-                        To select more than one option 
-                        can click the options while holding down the key. CTRL
-                    </p>
-                
+                    <br />
                     <select name="countries" onChange={e => handleSelect(e)} multiple>
                         {
                             allCountries?.map((element, index) => (
@@ -137,11 +135,13 @@ const ActivityCreate = () => {
                     </select>
                     {errors.countries && <p>{errors.countries}</p>}
                 </div>
-                <div>
+                <div className={s.btn}>
                     <input type="submit" value='Create' />
                 </div>
                 
             </form>
+        </div>
+                
         
     )
 }

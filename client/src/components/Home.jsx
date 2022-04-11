@@ -7,10 +7,10 @@ import {useDispatch, useSelector} from 'react-redux';
 // import las actions que voy a usar 
 import {getCountries, countriesByContinent, orderCountries, orderActivity} from '../actions/index'
 // importo los componentes que voy a usar
-import Card from './Card';
 import Paginado from './Paginado';
 import SearchBar from './SearchBar';
 import NavBar from './NavBar';
+import Cards from './Cards';
 // importo  los estilos de css module
 import s from '../styles/Home.module.css';
 import Loading from './Loading';
@@ -55,34 +55,24 @@ const Home = () => {
       <Loading/>
     )
   }
-
   else{
+
   return (
       <div className={s.container}>
+        <header>
           <NavBar 
             handleSelect={handleSelect}
             handleSort={handleSort}
             handleByActivity={handleByActivity}
           />
           <SearchBar />
-         {/*  <div className={s.cardsContainer}> */}
-          {
-            filteredCountries.length && 
-            filteredCountries.map( country => {
-                return (
-                    <NavLink to={'/home/' + country.id}>
-                        <Card 
-                          name={country.name} 
-                          image={country.image} 
-                          continent={country.continent}
-                      />
-                    </NavLink> 
-                )
-              }) 
-          }
-        {/*   </div> */}
-          
+        </header>
+
+          <Cards 
+            filteredCountries={filteredCountries}
+          />
           <Paginado page={page} setPage={setPage} maxPage={maxPage}/>
+  
       </div>
     )
   }

@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getNameCountries } from '../actions';
+// importo los estilos
+import s from '../styles/SearchBar.module.css'
 
 const SearchBar = () => {
     const dispatch = useDispatch()
@@ -22,14 +24,14 @@ const SearchBar = () => {
         })
     }
     return (
-        <div>
+        <div className={s.searchBarContainer}>
             <input 
                 type="text"
                 value={input.name}
                 placeholder='Buscar..'
                 onChange={e => handleChange(e)}
             />
-            <button onClick={e => handleClick(e)}>Buscar</button>
+            <button className={s.btn} onClick={e => handleClick(e)}>Buscar</button>
         </div>
     )
 }

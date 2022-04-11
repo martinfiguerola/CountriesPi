@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getAllActivities } from '../actions';
+//importo el estilo
+import s from '../styles/NavBar.module.css'
 
 const NavBar = ({handleSelect, handleSort, handleByActivity}) => {
     const dispatch = useDispatch();
@@ -13,18 +15,17 @@ const NavBar = ({handleSelect, handleSort, handleByActivity}) => {
    
    
     return (
-        <div>
-            <h1>Countries Page</h1>
+        <div className={s.selectContainer}>
            
-            <select defaultValue='Sort by:' onChange={e => handleSort(e)}>
-                <option>Sort by:</option>
+            <select className={s.select} defaultValue='Sort by:' onChange={e => handleSort(e)}>
+                <option disabled={true}>Sort by:</option>
                 <option value='asc'>A-Z</option> 
                 <option value='desc'>Z-A</option>
                 <option value='min'>Population(asc)</option>
                 <option value='max'>Population(desc)</option>
             </select>
 
-            <select defaultValue='Continent' onChange={ (e) => handleSelect(e)} >
+            <select className={s.select} defaultValue='Continent' onChange={ (e) => handleSelect(e)} >
                 <option disabled={true}>Continent</option>
                 <option value='Default'>Default-All</option>
                 <option value='South America'>South America</option>
@@ -36,7 +37,7 @@ const NavBar = ({handleSelect, handleSort, handleByActivity}) => {
                 <option value='Antarctica'>Antarctica</option>
             </select>
 
-            <select  defaultValue='Sort Activity' onChange={e => handleByActivity(e)} >
+            <select className={s.select} defaultValue='Sort Activity' onChange={e => handleByActivity(e)} >
                 <option>Sort Activity</option>
                 {
                     allActivities?.length > 0 &&
@@ -44,12 +45,15 @@ const NavBar = ({handleSelect, handleSort, handleByActivity}) => {
                         <option key={el.id} value={el.name}>{el.name.charAt(0).toUpperCase() + el.name.slice(1)}</option>
                     ))
                 }
-            </select>  
-            <NavLink to='/activity'>
-                <button type="button">
-                    Create Activity
-                </button>
-           </NavLink>
+            </select>
+            
+                <NavLink to='/activity'>
+                    <button className={s.button} type="button">
+                        Create Activity
+                    </button>
+                </NavLink>
+                
+            
         </div>
     )
 }

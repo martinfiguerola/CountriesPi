@@ -1,0 +1,38 @@
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-image: linear-gradient(
+    rgba(3, 7, 10, 0.60),
+     rgba(4, 7, 10, 0.60)), url(../images/hands.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    
+}
+.content{
+    color: #fff;
+    margin: auto;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.content .btn{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #001219;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 8px;
+    width: 65;
+    margin: 0.3rem;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff
+}
+.container .btn:hover{
+   background-color: #023047;
+}
+
+
