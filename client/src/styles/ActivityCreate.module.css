@@ -15,6 +15,10 @@
     margin-left: 20px;
     text-align: justify;
 }
+.controlers .errorControlers{
+    color: red;
+    font-size: 13px;
+}
 .controlers input{
     background-color: #efefef;
     border-radius: 4px;

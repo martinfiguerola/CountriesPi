@@ -11,10 +11,10 @@ const validate = (input) => {
         errors.name = 'campo requerido';
     }
     else if(input.season === ''){
-        errors.season = 'campo requerido'
+        errors.season = 'campo requerido';
     }
     else if(input.countries.length === 0){
-        errors.countries = 'campo requerido'
+        errors.countries = 'campo requerido';
     }
     return errors 
 }
@@ -84,7 +84,7 @@ const ActivityCreate = () => {
                         onChange= {e => handleChange(e)}
                         placeholder='Nombre de la actividad..'
                     />
-                    {errors.name && <p>{errors.name}</p>}
+                    {errors.name && <p className={s.errorControlers} >{errors.name}</p>}
                 </div>
                 <div className={s.controlers}>
                     <label>Difficulty: </label>
@@ -121,7 +121,7 @@ const ActivityCreate = () => {
                         <option value="winter">Winter</option>
                         <option value="spring">Spring</option>
                     </select>
-                    {errors.season && <p>{errors.season}</p>}
+                    {errors.season && <p className={s.errorControlers} >{errors.season}</p>}
                 </div>
                 <div className={s.controlers} >
                     <p>Select countries:</p>
@@ -133,7 +133,7 @@ const ActivityCreate = () => {
                             ))
                         }
                     </select>
-                    {errors.countries && <p>{errors.countries}</p>}
+                    {errors.countries && <p className={s.errorControlers} >{errors.countries}</p>}
                 </div>
                 <div className={s.btn}>
                     <input type="submit" value='Create' />

@@ -41,14 +41,14 @@ const Detail = (props) => {
                     <div className={s.containerActivities}>
                     
                         {
-                        activitiesDetail? activitiesDetail.map(element => (
+                        activitiesDetail?.length > 0 ? activitiesDetail.map(element => (
                             <div className={s.activitiesDetail} key={element.id}>
                                 <p><span>Name:</span>{element.name.charAt(0).toUpperCase() + element.name.slice(1)}</p>    
                                 <p><span>Difficulty:</span>{element.difficulty}</p>    
                                 <p><span>Duration:</span>{element.duration}</p>    
                                 <p><span>Season:</span> {element.season}</p>    
                             </div>
-                        )): <p>No hay nada</p>
+                        )): <span className={s.active} >Todavia no hay actividades</span>
                         }
                     </div>
                     

@@ -84,6 +84,11 @@
    height: 30vh;
     
 }
+.containerActivities .active{
+   color: red;
+   font-size: 12px;
+   margin-left: 30px;
+}
 .activitiesDetail{
     text-align: justify;
     margin: auto;
