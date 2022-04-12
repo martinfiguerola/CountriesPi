@@ -18,17 +18,17 @@ import Loading from './Loading';
 const Home = () => {
   const dispatch = useDispatch()
   const allCountries = useSelector((state) => state.filtered)
-  const [order, setOrder] = useState('') // se crea este este estado para el orden
+  const [order, setOrder] = useState('') 
   // un estado para identificar la pagina
   const [page, setPage] = useState(1)
   const [perPage] = useState(10)
-  const maxPage = Math.ceil(allCountries.length / perPage )
+  const maxPage = Math.ceil(allCountries.length / perPage ) 
   const firstIndex = (page - 1) * perPage; // 0 
   const lastIndex = (page - 1) * perPage + perPage // 0 + 10 -> 10
   const filteredCountries = allCountries.slice(firstIndex, lastIndex)
   // allCountries.slice((page - 1) * perPage, (page - 1) * perPAge + 10
-  //                     2 - 1 = 1 * 10--> 10 , 2 - 1 = 1 * 10 --> 10 +1
-  //              allCountries.slice( 10, 10) --> 0-----10 = 10 element   
+  //                     1 - 1 = 0 * 10--> (0) , 1 - 1 = 0 * 10 = 0 + 10--> 10 
+  //              allCountries.slice( 0 , 10) --> 0-----9 = 10 element   
   
   useEffect(() => {
     dispatch(getCountries())

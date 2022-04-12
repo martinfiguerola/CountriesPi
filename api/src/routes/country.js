@@ -33,7 +33,7 @@ const responseApi = async () => {
 router.get('/', async (req, res, next) => {
     const name = req.query.name
     //const filterContinent = req.query.filter
-    const countriesApi = await responseApi()
+    const countriesApi = responseApi()
     try {
         // VERIFICO SI ESTA LA BD LLENA
         const hay = await Country.findAll();
@@ -61,7 +61,7 @@ router.get('/', async (req, res, next) => {
     }
     else if(req.query.filter){
         try {
-           let arrcountries = [];
+            let arrcountries = [];
             const activityFound = await Activity.findOne({
                 where: { 
                     name: {

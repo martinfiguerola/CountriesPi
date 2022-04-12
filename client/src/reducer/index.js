@@ -51,8 +51,14 @@ export default function rootReducer(state = initialState, action){
             else if(action.payload === 'min'){
                 state.filtered.sort((a, b) => a.population - b.population)
             }
-            else{
+            else if(action.payload === 'max'){
                 state.filtered.sort((a, b) => b.population - a.population)
+            }
+            else if(action.payload === 'menor'){
+                state.filtered.sort((a, b) => a.area - b.area)
+            }
+            else{ // mayor
+                state.filtered.sort((a, b) => b.area - a.area)
             }
             return {
                 ...state,

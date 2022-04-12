@@ -23,6 +23,8 @@ const NavBar = ({handleSelect, handleSort, handleByActivity}) => {
                 <option value='desc'>Z-A</option>
                 <option value='min'>Population(asc)</option>
                 <option value='max'>Population(desc)</option>
+                <option value='menor'>Area(menor)</option>
+                <option value='mayor'>Area(mayor)</option>
             </select>
 
             <select className={s.select} defaultValue='Continent' onChange={ (e) => handleSelect(e)} >
