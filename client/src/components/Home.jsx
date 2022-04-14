@@ -36,8 +36,9 @@ const Home = () => {
     
   const handleSelect = (e) => {
     e.preventDefault()
-    setPage(1)
     dispatch(countriesByContinent(e.target.value))
+    setPage(1)
+    
   }  
   const handleSort= (e) => {
     e.preventDefault();

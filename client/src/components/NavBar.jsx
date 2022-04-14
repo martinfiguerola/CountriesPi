@@ -40,7 +40,7 @@ const NavBar = ({handleSelect, handleSort, handleByActivity}) => {
             </select>
 
             <select className={s.select} defaultValue='Sort Activity' onChange={e => handleByActivity(e)} >
-                <option>Sort Activity</option>
+                <option value={''}>Sort Activity</option>
                 {
                     allActivities?.length > 0 &&
                     allActivities?.map(el => (

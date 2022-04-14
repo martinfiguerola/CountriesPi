@@ -38,7 +38,7 @@ export default function rootReducer(state = initialState, action){
                 }
             }else{
                 return {
-                    ...state,
+                    ...state
                 }
             }
         case ORDER_COUNTRIES: 
