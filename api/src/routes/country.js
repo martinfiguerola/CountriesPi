@@ -33,7 +33,7 @@ const responseApi = async () => {
 router.get('/', async (req, res, next) => {
     const name = req.query.name
     //const filterContinent = req.query.filter
-    const countriesApi = responseApi()
+    const countriesApi = await responseApi()
     try {
         // VERIFICO SI ESTA LA BD LLENA
         const hay = await Country.findAll();
