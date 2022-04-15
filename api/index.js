@@ -28,4 +28,3 @@ conn.sync({ force: true}).then(() => {
   });
 });
 // git 
-// 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
