@@ -6,7 +6,7 @@
 
 
 ## _Built With_
-- [Javascript](https://javascript.org/)
+- [Javascript](https://javascript.com/)
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
 - [Node](https://nodejs.org/es/)
