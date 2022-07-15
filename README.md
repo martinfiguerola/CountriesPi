@@ -1,10 +1,8 @@
 <h1 align="center"><a href="https://pi-countries-seven.vercel.app">Countries App</a></h1>
 
 ## _Overview_
-<details>
-  <summary>Click to view!</summary>
+
   ![Captura de pantalla de 2022-07-05 17-18-36](https://user-images.githubusercontent.com/81661747/177416857-d2bbd7da-935c-4ff5-8bdb-b047fe62a320.png)
-</details>
 
 
 ## _Built With_
