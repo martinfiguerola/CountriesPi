@@ -24,10 +24,10 @@ Además vamos a poder asociar a un país con una actividad turística en concret
 ## Instalación :feet:
 
 ```
-git clone https://github.com/WanCirone/pedidoTopia.git
-npm install >> E-Commerce/api/
-npm start >> E-Commerce/api/
-npm install >> E-Commerce/client/
-npm start >> E-Commerce/client/
+git clone https://github.com/martinfiguerola/PI-Countries.git
+npm install >> PI-Countries/api/
+npm start >> PI-Countries/api/
+npm install >> PI-Countries/client/
+npm start >> PI-Countries/client/
 ```
 
