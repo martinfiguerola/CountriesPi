@@ -7,20 +7,27 @@ const {Op} = require('sequelize')
 const router = Router();
 
 router.post('/', async (req, res, next) => {
-   // name, dificultad, duration, temporada, countires
    const {name, difficulty, duration, season, countries} = req.body
-   //console.log(name, difficulty, duration)
+   //console.log(countries)
    try {
+      // Actividad Creada
       const activityCreate = await Activity.create({
          name,
          difficulty,
          duration,
          season
       })
+      // Pais o paises donde se van a cargar las actividades creadas
       let countriesDb = await Country.findAll(
-         { where: { name: countries } 
-      })
+         { 
+            where: { 
+               name: countries
+            } 
+         }
+      )
+      // Se enlaza la actividad creada con el pais correspondiente
       await activityCreate.addCountries(countriesDb)
+
       return res.json({message: 'Activity Created'})
    } catch (error) {
       next(error)
@@ -29,7 +36,7 @@ router.post('/', async (req, res, next) => {
 router.get('/', async (req, res, next) => {
    try {
       const activitiesAll = await Activity.findAll()
-      res.json(activitiesAll)
+      return res.json(activitiesAll)
    } catch (error) {
       next(error)
    }

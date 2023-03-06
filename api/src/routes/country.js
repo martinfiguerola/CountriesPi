@@ -13,13 +13,14 @@ const router = Router();
 // --- GET COUNTRIES ----
 // -- ME TRAIGO DATA DE LA API
 const responseApi = async () => {
-    const response = await axios.get('https://restcountries.com/v3.1/all'); 
+    
+    const response = await axios.get('https://restcountries.com/v3/all'); 
    
     return  response.data?.map(country => {
         return {
             id: country.cca3,
             name: country.name.common,
-            image: country.flags.png ? country.flags.png : 'img not found',
+            image: country.flags ? country.flags[0] : 'img not found',
             continent: country.continents[0],
             capital: country.capital  ? country.capital[0]: 'Capital not found',
             subregion: country.subregion,
@@ -32,20 +33,16 @@ const responseApi = async () => {
 
 router.get('/', async (req, res, next) => {
     const name = req.query.name
-    //const filterContinent = req.query.filter
-    const countriesApi = await responseApi()
     try {
-        // VERIFICO SI ESTA LA BD LLENA
-        const hay = await Country.findAll();
+        const allcountries = await responseApi(); // DATA DE API
 
-        if(!hay.length) await Country.bulkCreate(countriesApi)  
-
-    } catch (error) {
-        next(error)
-    }
-    // SI HAY NOMBRE
-    if(name){
-        try {
+        const allCountriesDb = await Country.findAll(); // DATA DE BS --> NO TIENE O SI TIENE
+        
+        if(!allCountriesDb.length){
+            await Country.bulkCreate(allcountries)
+        }
+        // Si buscan por input 
+        if(name){
             let countryName = await Country.findAll({
                 where: {
                     name: {
@@ -54,13 +51,11 @@ router.get('/', async (req, res, next) => {
                 },
                 include: { model: Activity}
             })
-            res.json(countryName)
-        } catch (error) {
-            next(error)
+            return res.json(countryName)
         }
-    }
-    else if(req.query.filter){
-        try {
+        // Si buscan por filtro
+        else if(req.query.filter){
+
             let arrcountries = [];
             const activityFound = await Activity.findOne({
                 where: { 
@@ -72,6 +67,7 @@ router.get('/', async (req, res, next) => {
                     model: Country,
                 },
             })
+                
             activityFound.countries?.forEach(element => {
                 return arrcountries.push({
                     id: element.id,
@@ -81,26 +77,25 @@ router.get('/', async (req, res, next) => {
                     population: element.population
                 })
             }); 
-            arrcountries.length ? 
+            return arrcountries.length ? 
             res.json(arrcountries):
             res.send('No hay paises con esta actividad')
-        } catch (error) {
-            next(error)
-        }   
-    } 
-    else {
-        try {
+        }
+        else {
+            // Cuando se cargan todos los paises
             const countries = await Country.findAll({
                 include: {model: Activity}
             })
-            res.json(countries)
-        } catch (error) {
-            next(error)
-
-        }
+            return res.json(countries)
+        } 
+        
+    } catch (error) {
+        next(error)
     }
     
 })
+
+
 
 router.get('/:id', async (req, res, next) => {
     const id = req.params.id
