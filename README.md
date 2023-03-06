@@ -23,10 +23,4 @@ Además vamos a poder asociar a un país con una actividad turística en concret
 
 ## Instalación 
 
-```
-git clone https://github.com/martinfiguerola/PI-Countries.git
-npm install >> PI-Countries/api/
-npm start >> PI-Countries/api/
-npm install >> PI-Countries/client/
-npm start >> PI-Countries/client/
-```
+
