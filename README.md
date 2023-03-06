@@ -1,4 +1,4 @@
-<h1 align="center"><a href="https://pi-countries-seven.vercel.app">Countries App</a></h1>
+<h1 align="center"><a href="https://pi-countries-seven.vercel.app">Countries PI</a></h1>
 
 ## _Previews_
 
