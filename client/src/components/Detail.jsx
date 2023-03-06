@@ -20,13 +20,13 @@ const Detail = (props) => {
         <div className={s.container}>
             <NavLink to='/home/'>
                 <button className={s.btn}>
-                Back
+                <p>Back</p>
                 </button>
             </NavLink>
 
             <div className={s.countryDescription} >
                 <figure>
-                    <img src={countryDetail.image} alt="img not found" />
+                    <img src={countryDetail.image} alt="img not found"  width='500px' height='300px' />
                 </figure>
                 <div className={s.countryBody}>
                     <div className={s.countryDetail}>

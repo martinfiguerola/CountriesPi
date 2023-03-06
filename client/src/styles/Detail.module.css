@@ -7,20 +7,15 @@
 
 .btn{
     display: flex;
-    background-color: #023047;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 13px;
-    padding: 4px;
-    border-radius: 3px;
-    color: #fff;
-    cursor: pointer;
-    width: 60px;
-
-
+    justify-content: center;
+    
+    background-color: rgb(40, 40, 117);
+    width: 80px;
+    height: 30px;
 }
-.btn:hover{
-    background-color: #041720;
+.btn p {
+    color:#fff;
+    
 }
 
 
@@ -36,8 +31,8 @@
     
 }
 .countryDescription figure{
-    margin: auto;
-    width: 25vw;
+    height: auto;
+    width: auto;
 
 }
 

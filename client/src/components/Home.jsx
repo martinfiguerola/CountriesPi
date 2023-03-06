@@ -51,7 +51,7 @@ const Home = () => {
     dispatch(orderActivity(e.target.value))
     setPage(1)
   }
-  if(filteredCountries.length < 1){
+  if(!filteredCountries || filteredCountries.length < 1){
     return (
       <Loading/>
     )

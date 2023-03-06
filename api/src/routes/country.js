@@ -16,7 +16,7 @@ const responseApi = async () => {
     
     const response = await axios.get('https://restcountries.com/v3/all'); 
    
-    return  response.data?.map(country => {
+    return  response.data.map(country => {
         return {
             id: country.cca3,
             name: country.name.common,
@@ -68,7 +68,7 @@ router.get('/', async (req, res, next) => {
                 },
             })
                 
-            activityFound.countries?.forEach(element => {
+            activityFound.countries.forEach(element => {
                 return arrcountries.push({
                     id: element.id,
                     name: element.name,
