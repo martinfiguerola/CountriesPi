@@ -10,7 +10,7 @@ import {BrowserRouter} from 'react-router-dom'
 import axios from 'axios'
 dotenv.config()
 
-axios.defaults.baseURL =  "countriespi-production.up.railway.app/" || process.env.REACT_APP_API 
+axios.defaults.baseURL =  "countriespi-production.up.railway.app/" 
 
 ReactDOM.render(
   <React.StrictMode>
